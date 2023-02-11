@@ -19,6 +19,8 @@ require __DIR__ .  '/functions.php';
 
 if(isset($_GET['length'])) {
     $result = generate_password($_GET['length']);
+
+    if($result === true) header('Location: success.php');
 }
 
 ?>
@@ -44,13 +46,13 @@ if(isset($_GET['length'])) {
                 </div>
                 <?php if(isset($result)) : ?>
                     <div class="col-7">
-                        <div class="alert alert-info">
-                            La tua password è: <strong><?= $result ?></strong>
+                        <div class="alert alert-danger">
+                           <strong><?= $result ?></strong>
                         </div>
                     </div>
                 <?php endif ?>
                 <div class="col-7">
-                    <form action="password.php" method="GET" class="p-3 border border-1 rounded-2 bg-light">
+                    <form action="index.php" method="GET" class="p-3 border border-1 rounded-2 bg-light">
                         <div class="row mb-3">
                             <label class="col-sm-7 col-form-label">Lunghezza password:</label>
                             <div class="col-sm-3">
